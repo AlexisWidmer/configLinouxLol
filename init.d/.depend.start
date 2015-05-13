@@ -1,0 +1,23 @@
+TARGETS = motd killprocs rpcbind nfs-common rsyslog virtualbox jetty acpi-fakekey binfmt-support sudo atd exim4 dbus speech-dispatcher acpi-support cron acpid anacron rsync bluetooth network-manager avahi-daemon gdm3 saned pulseaudio cups bootlogs minissdpd single rmnologin rc.local
+INTERACTIVE =
+atd: rsyslog
+exim4: rsyslog
+dbus: rsyslog
+speech-dispatcher: rsyslog
+acpi-support: rsyslog
+cron: rsyslog
+acpid: rsyslog
+anacron: rsyslog
+rsync: rsyslog
+bluetooth: rsyslog dbus
+network-manager: dbus rsyslog
+avahi-daemon: dbus rsyslog
+gdm3: dbus network-manager acpid
+saned: rsyslog dbus avahi-daemon
+pulseaudio: rsyslog network-manager
+cups: rsyslog avahi-daemon
+bootlogs: gdm3
+minissdpd: rsyslog atd exim4 bluetooth dbus network-manager gdm3 virtualbox speech-dispatcher avahi-daemon saned rpcbind nfs-common pulseaudio jetty bootlogs motd acpi-support cups cron acpi-fakekey binfmt-support acpid sudo anacron rsync
+single: killprocs bootlogs motd
+rmnologin: sudo rsyslog atd exim4 bluetooth dbus network-manager gdm3 virtualbox speech-dispatcher avahi-daemon saned rpcbind nfs-common pulseaudio jetty bootlogs motd acpi-support cups cron acpi-fakekey binfmt-support acpid anacron rsync
+rc.local: rsyslog atd exim4 bluetooth dbus network-manager gdm3 virtualbox speech-dispatcher avahi-daemon saned rpcbind nfs-common pulseaudio jetty bootlogs motd acpi-support cups cron acpi-fakekey binfmt-support acpid sudo anacron rsync

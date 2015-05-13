@@ -1,0 +1,3 @@
+<device DEVNO="0x0806" TIME="1417544156.77310" UUID="0122ca88-69d1-46da-b5c5-36280ad1843b" TYPE="swap">/dev/sda6</device>
+<device DEVNO="0x0801" TIME="1424814097.690139" LABEL="Réservé au système" UUID="B09244C292448EB2" TYPE="ntfs">/dev/sda1</device>
+<device DEVNO="0x0802" TIME="1421242727.461718" UUID="483A46633A464E5E" TYPE="ntfs">/dev/sda2</device>

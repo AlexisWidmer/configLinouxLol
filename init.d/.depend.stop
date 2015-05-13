@@ -1,0 +1,14 @@
+TARGETS = unattended-upgrades urandom virtualbox jetty atd exim4 speech-dispatcher acpi-support bluetooth gdm3 alsa-utils saned pulseaudio cups minissdpd network-manager avahi-daemon sendsigs rsyslog umountnfs.sh rpcbind nfs-common hwclock.sh networking umountfs umountroot halt reboot
+network-manager: pulseaudio
+avahi-daemon: saned
+sendsigs: atd exim4 bluetooth unattended-upgrades network-manager gdm3 minissdpd virtualbox speech-dispatcher alsa-utils avahi-daemon saned pulseaudio jetty
+rsyslog: sendsigs atd exim4 bluetooth network-manager speech-dispatcher avahi-daemon saned pulseaudio acpi-support cups
+umountnfs.sh: rsyslog atd exim4 bluetooth unattended-upgrades network-manager sendsigs gdm3 minissdpd virtualbox speech-dispatcher alsa-utils avahi-daemon saned pulseaudio jetty
+rpcbind: umountnfs.sh
+nfs-common: umountnfs.sh
+hwclock.sh: rsyslog atd nfs-common
+networking: exim4 umountnfs.sh jetty rpcbind
+umountfs: networking atd exim4 bluetooth unattended-upgrades network-manager gdm3 minissdpd virtualbox speech-dispatcher alsa-utils avahi-daemon saned umountnfs.sh pulseaudio jetty urandom rpcbind hwclock.sh
+umountroot: umountfs
+halt: umountroot
+reboot: umountroot
